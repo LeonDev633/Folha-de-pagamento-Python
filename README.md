@@ -31,7 +31,7 @@ Desconto de 20% do valor do benefício fornecido pela empresa.
 
 ### Plano de Saúde
 Desconto fixo de R$ 150,00 por dependente.
-
+84,72
 ## Instruções
 
 1. Solicite a matrícula e senha do funcionário para ter acesso aos seus dados.

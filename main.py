@@ -24,12 +24,14 @@ class Trabalhador(Base):
 
 def verificando_cpf():
     while True:
-        cpf = int(input("Informe seu CPF"))
-        id_usuario = session.query(Trabalhador).filter(Trabalhador.cpf == cpf)
-        if id_usuario in None:
+        cpf = input("Informe seu CPF: ")  # CPF deve ser tratado como string
+        id_usuario = session.query(Trabalhador).filter(Trabalhador.cpf == cpf).first()  # Obtenha o primeiro resultado
+
+        if id_usuario is None:  # CPF não cadastrado
             break
         else:
             print("CPF já cadastrado")
+    
     return cpf
 
 def cadastro ():
@@ -104,12 +106,13 @@ while True:
                 break
     elif opcao == 2:
         cpf_usuario = verificando_cpf()
+        senha = input("Informe sua senha: ")
         usuario = session.query(Trabalhador).filter_by(cpf = cpf_usuario)
-        dependentes = usuario.depente
-        salario_bruto = usuario.salario
-        
-
-
-    
+        if senha == usuario.senha:
+            dependentes = usuario.depente
+            salario_bruto = usuario.salario
+            inss = desconto_inss(salario_bruto)
+            deducao, desconto = imposto_de_renda(salario_bruto,dependentes)
+            descontos = inss + salario_bruto
     else:
         print("Opção invalida.")
